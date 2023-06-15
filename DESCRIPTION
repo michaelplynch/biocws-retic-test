@@ -3,7 +3,10 @@ Title: Check GHA for BiocWorkshop with reticulate
 Version: 2.0.0
 Authors@R: 
     person(given = "Michael",
-           family = "Lynch")
+           family = "Lynch",
+           role = c("aut", "cre"),
+           email = "michael.lynch@ul.ie",
+           comment = c(ORCID = "0000-0001-9535-6461"))
 Description: This package serves to test the github actions workflow when reticulate, or a package depending on reticulate, is in the DESCRIPTION imports or suggests. 
     Workflow seems to be working fine otherwise.
 License: MIT + file LICENSE
