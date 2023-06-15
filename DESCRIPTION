@@ -16,6 +16,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Depends: 
     Biobase
+Imports:
+    reticulate
 Suggests: 
     knitr,
     rmarkdown,
