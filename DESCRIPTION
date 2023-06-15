@@ -1,16 +1,11 @@
-Package: BuildABiocWorkshop
-Title: Bioconductor or R Workshop Template and Github Actions
+Package: BiocWorkshopTest
+Title: Check GHA for BiocWorkshop with reticulate
 Version: 2.0.0
 Authors@R: 
-    person(given = "Sean",
-           family = "Davis",
-           role = c("aut", "cre"),
-           email = "seandavi@gmail.com",
-           comment = c(ORCID = "0000-0002-8991-6458"))
-Description: This package serves as a template for using github actions to 
-    prepare a Bioconductor Workshop package for use. In particular,
-    a pkgdown website and docker image are generated based on workflow 
-    settings. 
+    person(given = "Michael",
+           family = "Lynch")
+Description: This package serves to test the github actions workflow when reticulate, or a package depending on reticulate, is in the DESCRIPTION imports or suggests. 
+    Workflow seems to be working fine otherwise.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -22,7 +17,7 @@ Suggests:
     knitr,
     rmarkdown,
     pkgdown
-URL: https://seandavi.github.io/BuildABiocWorkshop/
-BugReports: https://github.com/seandavi/BuildABiocWorkshop/issues/new/choose
+URL: https:https://michaelplynch.github.io/biocws-retic-test/
+BugReports: https://github.com/michaelplynch/biocws-retic-test
 VignetteBuilder: knitr
-DockerImage: ghcr.io/seandavi/buildabiocworkshop:latest
+DockerImage: ghcr.io/michaelplynch/biocws-retic-test:latest
