@@ -30,14 +30,20 @@ jobs:
           restore-keys: ${{ env.cache-version }}-${{ runner.os }}-r-
 
       # This lets us augment with additional dependencies
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          
       - name: Install system dependencies
         if: runner.os == 'Linux'
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
+          python -h
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           cat 'DESCRIPTION'
+          echo $sysreqs
           sudo -s eval "$sysreqs"
           
       - name: Install dependencies
