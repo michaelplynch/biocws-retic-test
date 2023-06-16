@@ -44,6 +44,8 @@ jobs:
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           cat 'DESCRIPTION'
           echo $sysreqs
+          sysreqs=${sysreqs//python/}
+          echo $sysreqs
           sudo -s eval "$sysreqs"
           
       - name: Install dependencies
