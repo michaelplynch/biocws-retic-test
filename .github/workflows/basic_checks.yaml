@@ -40,7 +40,7 @@ jobs:
 
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
+          python-version: "3.11"
           
       - name: setup r-reticulate venv
         shell: Rscript {0}
@@ -63,6 +63,8 @@ jobs:
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
+          Rscript -e  "library(reticulate)"
+          Rscript -e  "sessionInfo()"
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
