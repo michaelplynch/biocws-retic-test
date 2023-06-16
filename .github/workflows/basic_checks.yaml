@@ -35,10 +35,9 @@ jobs:
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
-          Rscript -e  "library(reticulate)"
-          Rscript -e  "sessionInfo()"
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqss=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
+          cat 'DESCRIPTION'
           cat "$sysreqss"
           sudo -s eval "$sysreqss"
           
