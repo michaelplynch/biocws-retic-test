@@ -30,14 +30,18 @@ jobs:
           restore-keys: ${{ env.cache-version }}-${{ runner.os }}-r-
 
       # This lets us augment with additional dependencies
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: rcmdcheck remotes reticulate
 
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
-
+          python-version: "3.x"
+          
       - name: setup r-reticulate venv
         shell: Rscript {0}
         run: |
@@ -46,18 +50,16 @@ jobs:
           
           library(reticulate)
           sessionInfo()
-          R.home()
-
                      
       - uses: r-lib/actions/check-r-package@v2
-      
+    
       - name: Install system dependencies
         if: runner.os == 'Linux'
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
           python -h
-          Rscript -e "library(reticulate);sessionINfo();r.home()"
+          Rscript -e "library(reticulate);sessionInfo();R.home()"
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           cat 'DESCRIPTION'
