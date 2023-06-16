@@ -66,8 +66,9 @@ jobs:
           Rscript -e  "library(reticulate)"
           Rscript -e  "sessionInfo()"
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
-          sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
-          sudo -s eval "$sysreqs"
+          sysreqss=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
+          cat "$sysreqss"
+          sudo -s eval "$sysreqss"
           
       - name: Install dependencies
         run: |
