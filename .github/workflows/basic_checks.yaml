@@ -36,7 +36,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: rcmdcheck remotes reticulate
+          extra-packages: rcmdcheck remotes reticulate BiocManager
 
       - uses: actions/setup-python@v4
         with:
@@ -66,12 +66,12 @@ jobs:
 #          echo $sysreqs
 #          sudo -s eval "$sysreqs"
           
-      - name: Install dependencies
-        run: |
-          BiocManager::repositories()
-          remotes::install_deps(dependencies = TRUE, repos = BiocManager::repositories())
-          remotes::install_cran("rcmdcheck")
-        shell: Rscript {0}
+#      - name: Install dependencies
+#        run: |
+#          BiocManager::repositories()
+#          remotes::install_deps(dependencies = TRUE, repos = BiocManager::repositories())
+#          remotes::install_cran("rcmdcheck")
+#        shell: Rscript {0}
 
       - name: Check
         env:
